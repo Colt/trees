@@ -24,6 +24,7 @@ function resetDisplay() {
   for(var j = 0; j<nodes.length; j++){
     nodes[j].style.backgroundColor = "white";
     orderList.innerHTML = '';
+    i = 0;
   }
 }
 
@@ -54,25 +55,20 @@ function checkKey(e) {
 function next(){
   var orderList = document.getElementById("order");
 
-  if( i > 0) {
-    nodes[i-1].style.backgroundColor = "pink";
-  }
-  nodes[i].style.backgroundColor = "red";
-  orderList.innerHTML += nodes[i].innerHTML + ", ";
-
-  if(!nodes[i+1]){
-    i = 0;
-    for(var j = 0; j<nodes.length; j++){
-      nodes[j].style.backgroundColor = "white";
-      orderList.innerHTML = '';
-    }
-  }
-  else{
+  if(!nodes[i]){
+    resetDisplay();
+  } else if(i===0) {
+    nodes[i].style.backgroundColor = "red";
+    orderList.innerHTML += nodes[i].innerHTML + ", ";
     i++;
-  }
+  } else {
+      nodes[i-1].style.backgroundColor = "pink";
+      console.log(nodes[i])
+      nodes[i].style.backgroundColor = "red";
+      orderList.innerHTML += nodes[i].innerHTML + ", ";
+      i++;
+    }
 }
-
-
 
 
 function bfs() {
@@ -99,40 +95,8 @@ function bfs() {
   return result;
 }
 
-// def bfs(value)
-//   queue = [@root]
-//
-//   while !queue.empty?
-//     current_node = queue.pop
-//     p current_node.value
-//     return current_node if current_node.value == value
-//     queue.unshift(current_node.left) if !current_node.left.nil?
-//     queue.unshift(current_node.right) if !current_node.right.nil?
-//   end
-//   return nil
-// end
 
-function nextBFS(){
-  var orderList = document.getElementById("order");
-  var bfsOrder = bfs(orderList)
 
-  if( i > 0) {
-    nodes[i-1].style.backgroundColor = "pink";
-  }
-  nodes[i].style.backgroundColor = "red";
-  orderList.innerHTML += nodes[i].innerHTML + ", ";
-
-  if(!nodes[i+1]){
-    i = 0;
-    for(var j = 0; j<nodes.length; j++){
-      nodes[j].style.backgroundColor = "white";
-      orderList.innerHTML = '';
-    }
-  }
-  else{
-    i++;
-  }
-}
 
 function prev(){
   var orderList = document.getElementById("order");
@@ -154,5 +118,3 @@ function prev(){
     i--;
   }
 }
-
-bfs();
