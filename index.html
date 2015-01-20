@@ -2,13 +2,20 @@
   <head>
     <title>Tree Visualizer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
   </head>
   <body>
+    <select id="type" onchange="changeOrder()">
+      <option value="dfs">Depth First Traversal</option>
+      <option value="bfs">Breadth First Traversal</option>
+    </select>
+
+    <div id="message"></div>
     <h1>Depth First Traversal(Preorder) of a Binary Tree</h1>
     <div class="tree">
-      <ul>
+      <ul id="root">
         <li>
-          <a href="#">60</a>
+          <a  href="#">60</a>
           <ul>
             <li>
               <a href="#">41</a>
@@ -80,6 +87,10 @@
                         </li>
                         <li>
                           <a href="#">10</a>
+                          <ul>
+                            <li> <a href="#">JOHN</a> </li>
+                            <li> <a href="#">MARTHA</a> </li>
+                          </ul>
                         </li>
                       </ul>
                     </li>
