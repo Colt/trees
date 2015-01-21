@@ -58,13 +58,13 @@ function next(){
   if(!nodes[i]){
     resetDisplay();
   } else if(i===0) {
-    nodes[i].style.backgroundColor = "red";
+    nodes[i].style.backgroundColor = "#2ecc71";
     orderList.innerHTML += nodes[i].innerHTML + ", ";
     i++;
   } else {
-      nodes[i-1].style.backgroundColor = "pink";
+      nodes[i-1].style.backgroundColor = "#bdc3c7";
       console.log(nodes[i])
-      nodes[i].style.backgroundColor = "red";
+      nodes[i].style.backgroundColor = "#2ecc71";
       orderList.innerHTML += nodes[i].innerHTML + ", ";
       i++;
     }
